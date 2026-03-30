@@ -1,26 +1,152 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ========================================
+   Gärtnerei Weeber – Globale Styles
+   Farbpalette: Forest Green, Cream, Honey, Blush, Charcoal
+   ======================================== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-forest: #2D5A3D;
+  --color-forest-light: #3D7A53;
+  --color-forest-dark: #1D3A28;
+  --color-cream: #FDF8F0;
+  --color-cream-dark: #F5EDE0;
+  --color-honey: #C4975C;
+  --color-honey-light: #D4AD76;
+  --color-blush: #E8C4B8;
+  --color-blush-light: #F0D8CF;
+  --color-charcoal: #2C2C2C;
+  --color-charcoal-light: #4A4A4A;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Basis-Styles */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* Auswahl-Farbe */
+::selection {
+  background-color: var(--color-honey);
+  color: white;
+}
+
+/* Scrollbar (Webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-forest);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest-light);
+}
+
+/* ========================================
+   Blütenblatt-Animation
+   ======================================== */
+@keyframes petal-fall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(105vh) translateX(100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes petal-sway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+}
+
+.petal {
+  position: absolute;
+  width: 12px;
+  height: 16px;
+  background: radial-gradient(ellipse at center, var(--color-blush) 0%, var(--color-blush-light) 50%, transparent 70%);
+  border-radius: 50% 50% 50% 0;
+  opacity: 0;
+  pointer-events: none;
+  animation: petal-fall linear infinite, petal-sway ease-in-out infinite;
+}
+
+/* ========================================
+   Text-Reveal Animation
+   ======================================== */
+@keyframes text-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.text-reveal {
+  animation: text-reveal 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* ========================================
+   Bild-Curtain-Reveal
+   ======================================== */
+@keyframes curtain-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ========================================
+   Botanisches Muster (SVG Background)
+   ======================================== */
+.botanical-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q35 15 30 25 Q25 15 30 5z' fill='%232D5A3D' fill-opacity='0.03'/%3E%3Cpath d='M10 35 Q15 25 20 35 Q15 45 10 35z' fill='%232D5A3D' fill-opacity='0.02'/%3E%3Cpath d='M45 40 Q50 30 55 40 Q50 50 45 40z' fill='%232D5A3D' fill-opacity='0.02'/%3E%3C/svg%3E");
+}
+
+/* ========================================
+   Formulare
+   ======================================== */
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   Responsive Hilfsstyles
+   ======================================== */
+@media (max-width: 768px) {
+  .petal {
+    width: 8px;
+    height: 11px;
+  }
 }

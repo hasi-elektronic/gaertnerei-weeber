@@ -76,7 +76,7 @@ export const SERVICES = [
     title: 'Wochendekoration',
     description: 'Regelmäßig frische Blumenarrangements für Ihre Geschäftsräume – abgestimmt auf Ihren Stil und die Saison.',
     /* TODO: Durch echtes Foto ersetzen */
-    image: 'https://images.unsplash.com/photo-1478217655589-37e72e3bc7f2?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=80',
   },
   {
     title: 'Blumenvermittlung',
@@ -90,7 +90,7 @@ export const SERVICES = [
 export const SEASONAL_IMAGES = [
   {
     /* TODO: Durch echtes Foto ersetzen */
-    src: 'https://images.unsplash.com/photo-1490750967868-88aa4f44baee?w=600&q=80',
+    src: 'https://images.unsplash.com/photo-1457089328109-e5d9bd499191?w=600&q=80',
     alt: 'Frühlingsstrauß mit Tulpen und Narzissen',
     season: 'Frühling',
   },
